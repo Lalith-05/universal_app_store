@@ -1,0 +1,358 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-black: #121212;
+    --secondary-black: #1e1e1e;
+    --primary-green: #4CAF50;
+    --secondary-green: #388E3C;
+    --light-green: #81C784;
+    --text-light: #f5f5f5;
+    --text-dark: #333;
+    --card-bg: #252525;
+    --hover-color: #2e2e2e;
+}
+
+body {
+    background-color: var(--primary-black);
+    color: var(--text-light);
+    line-height: 1.6;
+    cursor: none; /* Hide the default cursor */
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/7518/7518748.png'); /* Dragon icon */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 5px var(--primary-green));
+}
+
+.custom-cursor.clicking {
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--secondary-black);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    color: var(--primary-green);
+    font-size: 1.8rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.search-bar {
+    display: flex;
+    flex: 0 1 40%;
+    max-width: 500px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: var(--card-bg);
+    color: var(--text-light);
+}
+
+.search-bar button {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: var(--secondary-green);
+}
+
+.store-filter select {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+/* Navigation Styles */
+.category-nav {
+    background-color: var(--secondary-black);
+    padding: 0.5rem 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.category-nav li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.category-nav li:hover {
+    background-color: var(--hover-color);
+}
+
+.category-nav li.active {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* Main Content Styles */
+main {
+    padding: 1rem 2rem 3rem;
+}
+
+section {
+    margin-bottom: 2.5rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--light-green);
+}
+
+/* Featured Apps Slider */
+.app-slider {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+}
+
+.featured-app {
+    flex: 0 0 300px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.featured-app:hover {
+    transform: translateY(-5px);
+}
+
+.featured-app img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.featured-app-info {
+    padding: 1rem;
+}
+
+.featured-app-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.featured-app-info p {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.featured-app-info .store-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.store-badge.android {
+    background-color: #3DDC84;
+    color: var(--text-dark);
+}
+
+.store-badge.apple {
+    background-color: #A2AAAD;
+    color: var(--text-dark);
+}
+
+.store-badge.nvidia {
+    background-color: #76B900;
+    color: var(--text-dark);
+}
+
+/* App Grid */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.app-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+}
+
+.app-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.app-info {
+    padding: 1rem;
+}
+
+.app-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-info p {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.app-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.app-rating i {
+    color: gold;
+}
+
+.app-price {
+    font-weight: 600;
+    color: var(--light-green);
+}
+
+.app-price.free {
+    color: var(--primary-green);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-green);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: none;
+    }
+
+    .store-filter {
+        width: 100%;
+    }
+
+    .store-filter select {
+        width: 100%;
+    }
+
+    .category-nav ul {
+        padding-bottom: 0.3rem;
+    }
+
+    .app-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    main {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-grid {
+        grid-template-columns: 1fr;
+    }
+}
